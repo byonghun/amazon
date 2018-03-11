@@ -27,7 +27,7 @@ export default class extends Component {
             <IconButton
               aria-owns='menu-appbar'
               aria-haspopup="true"
-              onClick={() => console.log('clicked')}
+              onClick={this.handleMenu}
               color="inherit"
             >
               <AccountCircle />
@@ -43,15 +43,24 @@ export default class extends Component {
                 horizontal: 'right',
               }}
               anchorEl={anchorEl}
-              open={anchorEl}
-              onClose={() => console.log('close')} >
-              <MenuItem onClick={() => console.log('menu')}>Profile</MenuItem>
-              <MenuItem onClick={() => console.log('account')}>My Account</MenuItem>
+              open={Boolean(anchorEl)}
+              onClose={this.handleClose}
+            >
+              <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+              <MenuItem onClick={this.handleClose}>My Account</MenuItem>
             </Menu>
           </Toolbar>
         </AppBar>
       </div>
     )
+  }
+
+  handleMenu = event => {
+    this.setState({anchorEl: event.currentTarget})
+  }
+
+  handleClose = () => {
+    this.setState({anchorEl: null})
   }
 }
 
