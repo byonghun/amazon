@@ -1,0 +1,11 @@
+{
+	"presets": ["es2015", "react"],
+	"plugins": [
+		["extensible-destructuring", {"mode": "output", "impl": "immutable"}],
+	 	"react-hot-loader/babel",
+		["auto-import", {
+			"declarations": [
+				{"path": "react", "default": "React", "members": ["Component"]}]
+		}]
+	]
+}
